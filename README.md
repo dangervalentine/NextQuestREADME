@@ -3,7 +3,6 @@
 > please email **[support@nextquest.dev](mailto:support@nextquest.dev)** with a short introduction.
 
 <div align="center" style="background-color:#011627;padding-top:16px">
-  <img src="https://raw.githubusercontent.com/dangervalentine/NextQuestREADME/main/next_quest_readme.png" alt="NextQuest Logo" width="128" height="128" style="border-radius: 50%; border: 1px solid white;"/>
   <h1 style="color:#D6DEEB">NextQuest</h1>
   <p style="color:#D6DEEB">Track what you're playing. Plan what's next. Remember what you've finished.</p>
 </div>
