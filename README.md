@@ -1,36 +1,123 @@
-> **🔒 This is a public mirror of a private repository.**
-> The full source code lives in a private monorepo. If you're interested in viewing or contributing,
-> please email **[support@nextquest.dev](mailto:support@nextquest.dev)** with a short introduction.
-
-<div align="center" style="background-color:#011627;padding-top:16px">
-  <h1 style="color:#D6DEEB">NextQuest</h1>
-  <p style="color:#D6DEEB">Track what you're playing. Plan what's next. Remember what you've finished.</p>
-</div>
+# NextQuest
 
 <p align="center">
-  <a href="https://nextquest.dev"><img src="https://img.shields.io/badge/web-nextquest.dev-1d9bf0.svg" alt="Web"></a>
-  <a href="https://apps.apple.com/app/id6751153491"><img src="https://img.shields.io/badge/App%20Store-iOS-000000.svg?logo=apple" alt="iOS"></a>
-  <a href="https://play.google.com/store/apps/details?id=com.dangervalentine.nextquest"><img src="https://img.shields.io/badge/Google%20Play-Android-3DDC84.svg?logo=android" alt="Android"></a>
-  <img src="https://img.shields.io/badge/license-All%20Rights%20Reserved-red.svg" alt="License">
+  <img src="banner.webp" alt="NextQuest promotional art: every game, one place" width="860">
 </p>
 
----
+<p align="center">
+  <a href="https://nextquest.dev"><img src="https://img.shields.io/badge/web-nextquest.dev-7fdbca?style=flat-square" alt="Web"></a>
+  <a href="https://apps.apple.com/app/id6751153491"><img src="https://img.shields.io/badge/App%20Store-iOS-011627?style=flat-square&logo=apple&logoColor=white" alt="iOS"></a>
+  <a href="https://play.google.com/store/apps/details?id=com.dangervalentine.nextquest"><img src="https://img.shields.io/badge/Google%20Play-Android-3DDC84?style=flat-square&logo=android&logoColor=white" alt="Android"></a>
+  <img src="https://img.shields.io/badge/license-All%20Rights%20Reserved-c2185b?style=flat-square" alt="License">
+</p>
 
-## 🎮 What is NextQuest?
+> [!NOTE]
+> **This repository is a public stack overview, not the source.**
+> The application lives in a private monorepo. Email
+> **[support@nextquest.dev](mailto:support@nextquest.dev)** if you want to talk about it.
 
-NextQuest is a cross-platform game library, planner, and journal for video games. It runs as a
-native **iOS + Android** app and a full-featured **web** companion that stay in sync through a
-single shared account.
+NextQuest tracks what you're playing across web, iOS and Android. A game can sit in *playing* on
+Switch and *finished* on PC at the same time, because most trackers model one row per title and
+that breaks the first time you reinstall something you beat in 2019, so this one models
+playthroughs and keeps one per platform. Works offline. The catalog reseeds every night from IGDB.
 
-It's built around a **playthrough-centric** model: a single title can sit in *playing*, *finished*,
-and *backlog* at the same time across different platforms — because that's how people actually play
-games. Replaying a favorite on Switch doesn't erase the fact that you finished it on PC five years
-ago.
+## System architecture
 
-> All game media (screenshots, covers, logos) are the property of their respective publishers and
-> appear here for informational and illustrative purposes only.
+The grouping is by trust boundary. What matters is which code runs on a machine someone else
+controls.
 
-## 🌐 Where to find it
+<table>
+<tr>
+<td width="56%" valign="top">
+
+<img src="architecture.svg" alt="Five trust boundaries stacked top to bottom: external client-direct services, the untrusted client devices, the Cloudflare edge, the VPS running Caddy in front of the Next.js server, the .NET API, background workers, PostgreSQL and Elasticsearch, and the backend-only external services." width="100%">
+
+</td>
+<td valign="top">
+
+**External · client-direct**
+
+- **Firebase Auth** · issues the ID token, email sign-in
+- **Google Sign-In** · native SDK on the phone
+- **Apple Sign-In** · native SDK on the phone
+- **IGDB image CDN** · cover art
+- **Steam image CDN** · capsule and icon art
+- **YouTube** · trailer playback
+- **EAS Update** · over-the-air JS bundles
+
+**Client · untrusted device**
+
+- **Web browser** · Next.js, React, server-rendered
+- **React Native mobile app** · Expo, iOS and Android, on-device SQLite, OS keychain
+
+**Edge · Cloudflare**
+
+- **Cloudflare** · DNS, proxy, Full Strict TLS
+
+**Server · one Hetzner VPS**
+
+- **Caddy** · the only public ports
+- **Next.js server** · RSC and route handlers
+- **.NET API** · ASP.NET Core minimal APIs
+- **Background workers** · nightly seed, Steam and RAWG refresh
+- **PostgreSQL** · one database, user and catalog schemas
+- **Elasticsearch** · search indices and rolling telemetry
+
+**External · backend-only**
+
+- **IGDB API** · nightly CSV catalog dumps
+- **Twitch OAuth** · IGDB client credentials
+- **RAWG** · metadata backfill, off the request path
+- **Steam Web + Store API** · ownership, playtime, app details
+- **Steam OpenID** · account linking
+- **Cloudflare R2** · nightly backup
+- **Gmail SMTP** · signup and seeding reports
+- **IGDB MCP** · semantic search, from the Next.js server
+
+</td>
+</tr>
+</table>
+
+<details>
+<summary><b>What you can do with it</b>, for anyone who would rather read about the product</summary>
+
+<br>
+
+**Build a real library**
+- Track games across five statuses: *playing*, *queued*, *backlog*, *finished*, and *dropped*
+- Keep separate playthroughs per platform
+- Capture ratings, reviews, and structured notes that follow you between phone and desktop
+- Curate lists and tier lists you can share
+- Favourites, collections, and filtering by genre, theme, platform, year, and franchise
+
+**Discover what's next**
+- Search and browse a deep catalog with fast, relevance-ranked results
+- Companion data from store platforms, including store presence and player activity
+- Franchise and company pages with sortable releases
+- Daily challenges and quizzes built from your own library
+
+**Have a little fun**
+- Mini-games tucked inside the web app, including a retro arcade cabinet
+- Shareable scores and leaderboards
+
+**Built for the way you actually use it**
+- Works offline; everything syncs back the moment you reconnect
+- Drag, swipe, and haptics for prioritising what is next
+- Deep links open straight to the right game or list on whichever device you are on
+- Custom avatars, no profile photo required
+
+**Your account, your data**
+- Sign in with Google, Apple, or email
+- One-click data export, so you can leave with a complete copy of everything you created
+- Your real name is never published; public pages use your username only
+
+**A look of its own**
+- Custom Night Owl OLED dark theme
+- Hand-picked typography and a coherent visual language across every surface
+
+</details>
+
+## Where to find it
 
 | Surface | Where |
 |---|---|
@@ -39,61 +126,10 @@ ago.
 | Android | **[Google Play](https://play.google.com/store/apps/details?id=com.dangervalentine.nextquest)** |
 | Support | [support@nextquest.dev](mailto:support@nextquest.dev) |
 
----
+## License
 
-## ✨ What you can do with it
+**All Rights Reserved.** This project and its source code are proprietary and confidential. No
+part of this software may be reproduced, distributed, or transmitted in any form without prior
+written permission of the author.
 
-### 📚 Build a real library
-- Track games across **five statuses**: *playing*, *queued*, *backlog*, *finished*, and *dropped*
-- Keep **separate playthroughs per platform** — the same game can be active on one system and finished on another
-- Capture **ratings, reviews, and structured notes** that follow you between phone and desktop
-- Curate **lists** (and **tier lists**) you can share with friends
-- **Favorites, collections,** and rich filtering by genre, theme, platform, year, and franchise
-
-### 🔭 Discover what's next
-- Search and browse a deep catalog of games with fast, relevance-ranked results
-- Companion data from store platforms — store presence, player activity, and richer metadata refreshed regularly
-- Franchise and company pages with sortable releases
-- **Daily challenges** and **quizzes** built from your own library
-
-### 🕹️ Have a little fun
-- Mini-games tucked inside the web app — including a retro arcade cabinet
-- Shareable scores and leaderboards
-
-### 📱 Built for the way you actually use it
-- **Works offline.** Everything you do on a plane or a subway syncs back up the moment you reconnect
-- **Drag, swipe, and haptics** for prioritizing what's next
-- **Deep links** — tap a NextQuest link anywhere and it opens straight to the right game or list on whichever device you're on
-- **Custom avatars** — no profile photo required
-
-### 🔐 Your account, your data
-- Sign in with **Google**, **Apple**, or email
-- **One-click data export** — leave at any time with a complete copy of everything you've created
-- Privacy-first — your real name is never published; public pages use your username only
-
-### 🎨 A look of its own
-- Custom **Night Owl OLED** dark theme — gentle on phones, beautiful on big screens
-- Hand-picked typography and a coherent visual language across every surface
-
----
-
-## 🤝 Get in touch
-
-The full source is private. If you're interested in the project, have feedback, want to report a
-bug, or are curious about contributing, email
-**[support@nextquest.dev](mailto:support@nextquest.dev)** with a short introduction.
-
-## 📄 License
-
-**All Rights Reserved.** This project and its source code are proprietary and confidential. No part
-of this software may be reproduced, distributed, or transmitted in any form without prior written
-permission of the author.
-
-## 🙏 Acknowledgments
-
-NextQuest is built on top of a wide community of open source and data-provider work — thank you to
-everyone whose libraries, catalogs, and tools make a project like this possible.
-
----
-
-<p align="center"><b>Happy questing. 🎮✨</b></p>
+Game media belongs to the respective publishers and appears here for illustration.

@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="1204" viewBox="0 0 560 1204" role="img" aria-label="NextQuest system architecture, grouped by trust boundary">
+<title>NextQuest system architecture, grouped by trust boundary</title>
+<rect width="560" height="1204" fill="#011627"/>
+<rect x="20" y="20" width="520" height="224" rx="10" fill="#081f31" stroke="#1d3b53"/>
+<text x="38" y="48" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" letter-spacing="1.6" fill="#8badc1">EXTERNAL · CLIENT-DIRECT</text>
+<rect x="38" y="62" width="153" height="46" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="52" y="90" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Firebase Auth</text>
+<rect x="203" y="62" width="153" height="46" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="217" y="90" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Google Sign-In</text>
+<rect x="368" y="62" width="153" height="46" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="382" y="90" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Apple Sign-In</text>
+<rect x="38" y="120" width="153" height="46" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="52" y="148" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">IGDB image CDN</text>
+<rect x="203" y="120" width="153" height="46" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="217" y="148" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Steam image CDN</text>
+<rect x="368" y="120" width="153" height="46" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="382" y="148" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">YouTube</text>
+<rect x="38" y="178" width="484" height="46" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="52" y="206" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">EAS Update</text>
+<line x1="280" y1="244" x2="280" y2="258" stroke="#2c4f6b"/>
+<line x1="280" y1="274" x2="280" y2="288" stroke="#2c4f6b"/>
+<line x1="20" y1="266" x2="205.20999999999998" y2="266" stroke="#2c4f6b"/>
+<line x1="354.79" y1="266" x2="540" y2="266" stroke="#2c4f6b"/>
+<text x="280" y="270" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#82aaff">tokens, images, OTA</text>
+<rect x="20" y="288" width="520" height="108" rx="10" fill="#081f31" stroke="#1d3b53"/>
+<text x="38" y="316" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" letter-spacing="1.6" fill="#8badc1">CLIENT · UNTRUSTED DEVICE</text>
+<rect x="38" y="330" width="236" height="46" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="52" y="358" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Web browser</text>
+<rect x="286" y="330" width="236" height="46" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="300" y="358" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">React Native mobile app</text>
+<line x1="280" y1="396" x2="280" y2="410" stroke="#2c4f6b"/>
+<line x1="280" y1="426" x2="280" y2="440" stroke="#2c4f6b"/>
+<line x1="20" y1="418" x2="188.16" y2="418" stroke="#2c4f6b"/>
+<line x1="371.84000000000003" y1="418" x2="540" y2="418" stroke="#2c4f6b"/>
+<text x="280" y="422" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#82aaff">RSC + /api, bearer token</text>
+<rect x="20" y="440" width="520" height="108" rx="10" fill="#081f31" stroke="#1d3b53"/>
+<text x="38" y="468" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" letter-spacing="1.6" fill="#8badc1">EDGE · CLOUDFLARE</text>
+<rect x="38" y="482" width="484" height="46" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="52" y="510" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Cloudflare</text>
+<line x1="280" y1="548" x2="280" y2="562" stroke="#2c4f6b"/>
+<line x1="280" y1="578" x2="280" y2="592" stroke="#2c4f6b"/>
+<line x1="20" y1="570" x2="194.98000000000002" y2="570" stroke="#2c4f6b"/>
+<line x1="365.02" y1="570" x2="540" y2="570" stroke="#2c4f6b"/>
+<text x="280" y="574" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#82aaff">one public entry point</text>
+<rect x="20" y="592" width="520" height="306" rx="10" fill="#081f31" stroke="#1d3b53"/>
+<text x="38" y="620" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" letter-spacing="1.6" fill="#8badc1">SERVER · ONE HETZNER VPS</text>
+<rect x="38" y="634" width="484" height="46" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="52" y="662" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Caddy</text>
+<line x1="280" y1="680" x2="280" y2="694" stroke="#2c4f6b"/>
+<line x1="280" y1="710" x2="280" y2="724" stroke="#2c4f6b"/>
+<line x1="38" y1="702" x2="252.95" y2="702" stroke="#2c4f6b"/>
+<line x1="307.05" y1="702" x2="522" y2="702" stroke="#2c4f6b"/>
+<text x="280" y="706" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#82aaff">proxy</text>
+<rect x="38" y="724" width="153" height="64" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="52" y="752" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Next.js server</text>
+<rect x="203" y="724" width="153" height="64" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="217" y="752" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">.NET API</text>
+<rect x="368" y="724" width="153" height="64" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="382" y="752" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Background</text>
+<text x="382" y="770" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">workers</text>
+<line x1="280" y1="788" x2="280" y2="802" stroke="#2c4f6b"/>
+<line x1="280" y1="818" x2="280" y2="832" stroke="#2c4f6b"/>
+<line x1="38" y1="810" x2="138.77" y2="810" stroke="#2c4f6b"/>
+<line x1="179.23" y1="810" x2="280" y2="810" stroke="#2c4f6b"/>
+<text x="159" y="814" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#82aaff">SQL</text>
+<line x1="280" y1="810" x2="377.36" y2="810" stroke="#2c4f6b"/>
+<line x1="424.64" y1="810" x2="522" y2="810" stroke="#2c4f6b"/>
+<text x="401" y="814" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#82aaff">HTTP</text>
+<rect x="38" y="832" width="236" height="46" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="52" y="860" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">PostgreSQL</text>
+<rect x="286" y="832" width="236" height="46" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="300" y="860" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Elasticsearch</text>
+<line x1="280" y1="898" x2="280" y2="912" stroke="#2c4f6b"/>
+<line x1="280" y1="928" x2="280" y2="942" stroke="#2c4f6b"/>
+<line x1="20" y1="920" x2="212.03" y2="920" stroke="#2c4f6b"/>
+<line x1="347.97" y1="920" x2="540" y2="920" stroke="#2c4f6b"/>
+<text x="280" y="924" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#82aaff">secrets stay here</text>
+<rect x="20" y="942" width="520" height="242" rx="10" fill="#081f31" stroke="#1d3b53"/>
+<text x="38" y="970" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" letter-spacing="1.6" fill="#8badc1">EXTERNAL · BACKEND-ONLY</text>
+<rect x="38" y="984" width="153" height="46" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="52" y="1012" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">IGDB API</text>
+<rect x="203" y="984" width="153" height="46" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="217" y="1012" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Twitch OAuth</text>
+<rect x="368" y="984" width="153" height="46" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="382" y="1012" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">RAWG</text>
+<rect x="38" y="1042" width="153" height="64" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="52" y="1070" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Steam Web +</text>
+<text x="52" y="1088" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Store API</text>
+<rect x="203" y="1042" width="153" height="64" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="217" y="1070" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Steam OpenID</text>
+<rect x="368" y="1042" width="153" height="64" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="382" y="1070" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Cloudflare R2</text>
+<rect x="38" y="1118" width="236" height="46" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="52" y="1146" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Gmail SMTP</text>
+<rect x="286" y="1118" width="236" height="46" rx="8" fill="#122a3d" stroke="#2c4f6b"/>
+<text x="300" y="1146" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">IGDB MCP</text>
+</svg>
